@@ -1,0 +1,63 @@
+<html>
+
+<head>
+
+    <title>로또 당첨 번호 추첨</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<nav>
+      <ul>
+        <li><a href="https://www.dhlottery.co.kr/common.do?method=main%22%3E%EC%82%AC%EB%9E%91%EC%9D%84 ">함께하는 동행복권</a></li>
+        <li><a href="#">메뉴 2</a></li>
+        <li><a href="#">메뉴 3</a></li>
+        <li><a href="#">메뉴 4</a></li>
+      </ul>
+    </nav>
+
+    <fieldset>
+        <legend>로또 발생기</legend>
+        <button onclick="showLottoNumber();">로또 발생</button>
+        <span id='lotto' style='font-size:2em;color:red;font-weight:bold;'></span>
+     </fieldset>
+     <script>
+        function setRandomNumber(random,start,end){
+            for(var i=0;i<random.length;i++) {
+                while(true) {
+                    //랜덤하게 숫자를 발생 시킴
+                    var randomNumber= parseInt(Math.random()*(end-start+1))+start;
+                    //랜덤하게 발생한 숫자 중복여부 체크를 위한 변수 선언
+                    var isDuplicated = false;
+                    //랜덤하게 발생시킨 숫자(randomNumber)와 배열(random)에 저장된 값의 중복 여부 체크
+                    for(var k=0;k <=i-1;k++) {
+                        if(randomNumber == random[k]) {//중복된 경우
+                            isDuplicated = true;
+                            break;
+                        }//if
+                    }//for
+                    if(!isDuplicated) {//중복되지 않는 경우
+                        random[i]=randomNumber;
+                        break;
+                    }
+                }//while
+            }//for
+        }
+        //2.함수호출
+        var lotto = new Array(6).fill(0);
+        setRandomNumber(lotto,1,45);
+        //3.lotto번호를 id가 lotto인 span태그사이에 출력
+        var span = document.querySelector('#lotto');
+        function showLottoNumber(){
+            var lotto =new Array(6);
+            setRandomNumber(lotto,1,45);
+            var lottoNumber='';
+            lotto.forEach(function(item){
+                lottoNumber+=item+' ';
+            });
+            span.textContent=lottoNumber;
+        }
+
+     </script>
+</body>
+</html>
