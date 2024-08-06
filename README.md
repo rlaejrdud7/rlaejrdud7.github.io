@@ -1,1 +1,1 @@
-# rlaejrdud7.github.io
+# rlaejrdud7.lotto
